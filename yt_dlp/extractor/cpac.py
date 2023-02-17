@@ -9,13 +9,6 @@ from ..utils import (
     urljoin,
 )
 
-# compat_range
-try:
-    if callable(xrange):
-        range = xrange
-except (NameError, TypeError):
-    pass
-
 
 class CPACIE(InfoExtractor):
     IE_NAME = 'cpac'
@@ -60,8 +53,6 @@ class CPACIE(InfoExtractor):
                     fmt['language_preference'] = -1
                 else:
                     fmt['language_preference'] = -10
-
-        self._sort_formats(formats)
 
         category = str_or_none(content['details']['category_%s_t' % (url_lang, )])
 
